@@ -1,0 +1,1 @@
+projects page when the project is clicked it will then bring out a modal which has more details
