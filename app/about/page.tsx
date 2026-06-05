@@ -9,14 +9,61 @@ export default function About() {
         { title: 'Quality', icon: '⭐', color: 'text-blue-600', description: 'Ensuring excellence in every aspect of our work.' },
         { title: 'Safety', icon: '🛡️', color: 'text-lime-600', description: 'Prioritizing the health and safety of our employees, clients, and the public.' },
         { title: 'Innovation', icon: '💡', color: 'text-blue-600', description: ' Embracing new technologies and methods to improve efficiency and outcomes.' },
-        { title: 'Sustainability', icon: '💡', color: 'text-lime-600', description: 'Committing to environmental stewardship in all our projects.' },
+        { title: 'Sustainability', icon: '🌱', color: 'text-lime-600', description: 'Committing to environmental stewardship in all our projects.' },
     ];
 
-    const team = [
-        { name: 'John Smith', role: 'Founder & CEO', experience: '25+ years', image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
-        { name: 'Sarah Johnson', role: 'Lead Architect', experience: '15+ years', image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
-        { name: 'Michael Chen', role: 'Project Director', experience: '20+ years', image: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }
-    ];
+    const leadershipTeam = {
+        chairman: {
+            name: 'Eng. Tafadzwa Muguti',
+            title: 'Group Chairman',
+            message: '"At Infradevcor, we believe that infrastructure is the backbone of African progress. Our commitment to excellence, integrity, and innovation drives us to build not just structures, but lasting relationships with our clients and communities across the continent. As we embark on this journey, I am confident that our dedicated team will set new benchmarks in the construction industry, delivering projects that stand the test of time while contributing to sustainable development across Africa."',
+            // PLACEHOLDER IMAGE - Replace with actual image
+            image: 'https://placehold.co/800x1000/1a2b3c/white?text=Chairman+Photo',
+        },
+        gm: {
+            name: 'Thabo Mbeki',
+            title: 'General Manager',
+            role: 'General Manager - Operations',
+            experience: '22+ years',
+            // PLACEHOLDER IMAGE - Replace with actual image
+            image: 'https://placehold.co/800x800/2c3e50/white?text=GM+Photo',
+            bio: 'Leading overall operations with expertise in large-scale infrastructure projects across East and West Africa'
+        },
+        managers: [
+            { 
+                name: 'Amina Diallo', 
+                role: 'Project Manager', 
+                experience: '12+ years',
+                // PLACEHOLDER IMAGE - Replace with actual image
+                image: 'https://placehold.co/800x800/34495e/white?text=Amina+Diallo',
+                specialization: 'Road & Highway Projects'
+            },
+            { 
+                name: 'Musa Keita', 
+                role: 'Site Manager', 
+                experience: '10+ years',
+                // PLACEHOLDER IMAGE - Replace with actual image
+                image: 'https://placehold.co/800x800/2c3e50/white?text=Musa+Keita',
+                specialization: 'Water Management'
+            },
+            { 
+                name: 'Zanele Ndlovu', 
+                role: 'Safety Manager', 
+                experience: '8+ years',
+                // PLACEHOLDER IMAGE - Replace with actual image
+                image: 'https://placehold.co/800x800/34495e/white?text=Zanele+Ndlovu',
+                specialization: 'HSE & Compliance'
+            },
+            { 
+                name: 'Oluwaseun Adebayo', 
+                role: 'Quality Manager', 
+                experience: '11+ years',
+                // PLACEHOLDER IMAGE - Replace with actual image
+                image: 'https://placehold.co/800x800/2c3e50/white?text=Oluwaseun+Adebayo',
+                specialization: 'Quality Assurance'
+            }
+        ]
+    };
 
     return (
         <main className="min-h-screen bg-stone-50">
@@ -40,36 +87,120 @@ export default function About() {
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Company Overview</h2>
                         <p className="text-gray-600 mb-4 leading-relaxed">
                             Infradevcor Private Limited is a dynamic and innovative civil construction company,
-                            newly established to redefine the landscape of the construction industry.
+                            newly established to redefine the landscape of the construction industry across Africa.
                         </p>
                         <p className="text-gray-600 mb-4 leading-relaxed">
-                            Specializing in
-                            a broad spectrum of civil construction services, we are establishing ourselves as a key
+                            Specializing in a broad spectrum of civil construction services, we are establishing ourselves as a key
                             player in the development of infrastructure that powers the future with a forward-thinking
                             approach, we specialize in delivering high-quality construction projects that meet the
                             evolving needs of our clients and the environment.
                         </p>
                         <p className="text-gray-600 leading-relaxed">
-                            Our projects span across vital
-                            sectors including road construction, water management, urban development, and
+                            Our projects span across vital sectors including road construction, water management, urban development, and
                             renewable energy. Our mission is to build not just structures but sustainable and
-                            valuable spaces that enhance communities and lives
+                            valuable spaces that enhance communities and lives across the African continent.
                         </p>
                     </div>
                     <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
+                        {/* PLACEHOLDER IMAGE - Replace with actual image */}
                         <Image
-                            src="https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                            alt="Construction team"
+                            src="https://placehold.co/1200x800/2c3e50/white?text=Construction+Team+Photo"
+                            alt="Construction team placeholder"
                             fill
                             className="object-cover"
                             unoptimized={true}
+                            
                         />
                     </div>
                 </div>
             </section>
 
+            {/* Chairman's Message */}
+            <section className="py-20 bg-linear-to-br from-blue-50 to-stone-100" id="team">
+                <div className="max-w-6xl mx-auto px-4">
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                        <div className="flex flex-col items-center">
+                            <div className="relative w-full max-w-md h-[500px] rounded-2xl overflow-hidden border-4 border-lime-600 shadow-xl">
+                                <Image
+                                    src={leadershipTeam.chairman.image}
+                                    alt={leadershipTeam.chairman.name}
+                                    fill
+                                    className="object-cover object-top"
+                                    unoptimized={true}
+                                />
+                            </div>
+                            <div className="text-center mt-6">
+                                <h3 className="text-2xl font-bold text-gray-800">{leadershipTeam.chairman.name}</h3>
+                                <p className="text-lime-600 font-semibold text-lg">{leadershipTeam.chairman.title}</p>
+                            </div>
+                        </div>
+                        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 relative">
+                            <div className="absolute -top-4 left-8 text-6xl text-lime-600 opacity-20">"</div>
+                            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic relative z-10">
+                                {leadershipTeam.chairman.message}
+                            </p>
+                            <div className="absolute -bottom-4 right-8 text-6xl text-lime-600 opacity-20">"</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* General Manager Section */}
+            <section className="pt-20 pb-10 bg-white">
+                <div className="max-w-6xl mx-auto px-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Leadership Team</h2>
+                    <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-50 to-lime-50 rounded-2xl shadow-lg overflow-hidden">
+                        <div className="grid md:grid-cols-2 gap-8 p-8 items-center">
+                            <div className="relative h-80 rounded-xl overflow-hidden">
+                                <Image
+                                    src={leadershipTeam.gm.image}
+                                    alt={leadershipTeam.gm.name}
+                                    fill
+                                    className="object-cover"
+                                    unoptimized={true}
+                                />
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-bold text-gray-800 mb-2">{leadershipTeam.gm.name}</h3>
+                                <p className="text-lime-600 font-semibold text-lg mb-2">{leadershipTeam.gm.title}</p>
+                                <p className="text-blue-600 mb-3">{leadershipTeam.gm.experience} experience</p>
+                                <p className="text-gray-600 leading-relaxed">{leadershipTeam.gm.bio}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Managers Section */}
+            <section className="py-10 bg-white">
+                <div className="max-w-7xl mx-auto px-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Our Management Team</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {leadershipTeam.managers.map((manager, index) => (
+                            <div key={index} className="bg-stone-50 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                                <div className="relative h-64 overflow-hidden">
+                                    <Image
+                                        src={manager.image}
+                                        alt={manager.name}
+                                        fill
+                                        className="object-cover group-hover:scale-110 transition duration-500"
+                                        unoptimized={true}
+                                    />
+                                </div>
+                                <div className="p-6">
+                                    <h3 className="text-xl font-bold text-gray-800 mb-1">{manager.name}</h3>
+                                    <p className="text-lime-600 font-semibold mb-2">{manager.role}</p>
+                                    <p className="text-blue-600 text-sm mb-2">{manager.specialization}</p>
+                                    <p className="text-gray-500 text-sm">{manager.experience} experience</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* Mission Statement */}
-            <section className="py-20 bg-white">
+            <section className="py-20 bg-stone-50">
                 <div className="max-w-3xl mx-auto px-4 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Mission</h2>
                     <p className="text-xl text-gray-600 leading-relaxed italic mb-8">
@@ -94,31 +225,6 @@ export default function About() {
                     ))}
                 </div>
             </section>
-
-            {/* Leadership Team */}
-            {/* <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4">
-                    <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Leadership Team</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {team.map((member, index) => (
-                            <div key={index} className="text-center">
-                                <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-blue-600">
-                                    <Image
-                                        src={member.image}
-                                        alt={member.name}
-                                        fill
-                                        className="object-cover"
-                                        unoptimized={true}
-                                    />
-                                </div>
-                                <h3 className="text-xl font-bold text-gray-800 mb-1">{member.name}</h3>
-                                <p className="text-lime-600 font-semibold mb-2">{member.role}</p>
-                                <p className="text-gray-500">{member.experience} experience</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section> */}
 
             {/* CTA */}
             <section className="py-20 bg-linear-to-r from-blue-900 to-blue-800 text-white text-center px-4">

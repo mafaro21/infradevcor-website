@@ -2,12 +2,10 @@
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Avonlea from '@/public/avonlea.png';
-import School from '@/public/school.png';
-import Sewer from '@/public/sewer.png';
 
 // Define types
 interface Project {
@@ -24,6 +22,7 @@ export default function Projects() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     const projects: Project[] = [
         {
@@ -70,44 +69,13 @@ export default function Projects() {
             description: `Rehabilitation of sewer lines across multiple locations in Chitungwiza under Procurement Reference Number CM/EN/19/24. The scope includes providing materials excluding GRP (Glass Reinforced Pipes) pipes and joints, with specific focus on uprooting existing sewer pipe lines, correcting levels, and relaying GRP pipes. Location of Works: Lot 1 - PaGomba trunk to Zengeza Outfall (1.2km), Lot 2 - Zengeza main outfall (3.3km).`
         },
         {
-            title: 'Construction of Block B Admin Block at Zimbabwe Open University (ZOU)',
-            category: 'Institutional',
-            location: 'Zimbabwe Open University',
-            year: '2025',
-            color: 'bg-lime-600',
-            images: [
-                '/zoublockb/WhatsApp Image 2026-05-18 at 19.58.03 (1).webp',
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.56.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.57 (1).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.06.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.57.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.58 (1).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.58.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.59 (1).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.59 (2).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.59 (3).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.57.59.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.00 (1).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.00.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.01.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.03 (1).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.03.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.04.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.05 (1).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.05 (2).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.05.webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.06 (1).webp",
-                "/zoublockb/WhatsApp Image 2026-05-18 at 19.58.06 (2).webp",
-            ],
-            description: `Construction of Block B Administration Block at the Zimbabwe Open University (ZOU) campus. This institutional project encompasses the complete build of a modern administrative facility to enhance the university's campus infrastructure.`
-        },
-        {
             title: 'Water Fountain at Zimbabwe Open University (ZOU)',
             category: 'Institutional',
             location: 'Zimbabwe Open University',
             year: '2025',
             color: 'bg-sky-600',
             images: [
+                "/zoufountain/WhatsApp Image 2026-05-19 at 01.30.04.png",
                 "/zoufountain/WhatsApp Image 2026-05-19 at 01.30.04.webp",
                 "/zoufountain/WhatsApp Image 2026-05-19 at 01.30.03 (1).webp",
                 "/zoufountain/WhatsApp Image 2026-05-19 at 01.30.06.webp",
@@ -152,52 +120,132 @@ export default function Projects() {
             <Navbar />
             <div className="h-20"></div>
 
-            {/* Page Header */}
-            <section className="bg-lime-600 text-white py-20 px-4 text-center">
-                <div className="max-w-3xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Projects</h1>
-                    <p className="text-xl opacity-90">Explore our portfolio of completed construction projects</p>
+            {/* Page Header with Video on the RIGHT */}
+            <section className="bg-lime-600 text-white py-10 px-4">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col lg:flex-row items-center gap-12">
+                        {/* Left Side - Text Content */}
+                        <div className="flex-1 text-center lg:text-left">
+                            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Projects</h1>
+                            <p className="text-xl opacity-90">
+                                Explore our portfolio of completed construction projects
+                            </p>
+                            <div className="mt-6 w-24 h-1 bg-white/50 rounded-full mx-auto lg:mx-0"></div>
+                        </div>
+
+                        {/* Right Side - Actual Video */}
+                        <div className="flex-1 w-full">
+                            <div className="relative bg-black/30 rounded-xl overflow-hidden shadow-2xl">
+                                <video
+                                    ref={videoRef}
+                                    className="w-full h-full object-cover rounded-xl"
+                                    controls
+                                    // autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                >
+                                    <source src="/videos/project.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div className="text-lg text-center font-bold mt-4">Spotlight: Chitungwiza Sewer Rehabilitation</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            {/* Projects Grid */}
+            {/* Projects Grid Section */}
             <section className="py-12 px-4 max-w-7xl mx-auto">
-                <div className='text-black pb-9 text-center text-lg'>Infradevcor Private Limited has already embarked on notable
-                    projects, including:</div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
-                        <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition flex flex-col">
-                            <div className={`${project.color} h-2`}></div>
-                            <div className="relative h-56">
-                                <Image
-                                    src={project.images[0]}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover"
-                                    unoptimized={typeof project.images[0] === 'string'}
-                                />
-                                <div className={`absolute top-4 right-4 ${project.color} text-white px-3 py-1 rounded-full text-sm font-semibold`}>
-                                    {project.category}
-                                </div>
-                            </div>
-                            <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
-                                <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-grow">{project.description}</p>
-                                <div className="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
-                                    <span>📍 {project.location}</span>
-                                    <span>📅 {project.year}</span>
-                                </div>
-                                {project.images.length > 1 && (
-                                    <button
-                                        onClick={() => openGallery(project)}
-                                        className="mt-4 w-full bg-gray-100 cursor-pointer hover:bg-gray-200 text-gray-700 py-2 rounded-md text-sm font-medium transition"
-                                    >
-                                        🖼️ View Gallery ({project.images.length} photos)
-                                    </button>
-                                )}
+                <div className='text-black pb-9 text-center text-lg'>Infradevcor Private Limited has already embarked on notable projects, including:</div>
+                
+                <div className="flex flex-wrap justify-center gap-8">
+                    {/* Project 1 - Avonlea */}
+                    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition flex flex-col w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
+                        <div className="bg-lime-600 h-2"></div>
+                        <div className="relative h-56">
+                            <Image
+                                src={projects[0].images[0]}
+                                alt={projects[0].title}
+                                fill
+                                className="object-cover"
+                                unoptimized={typeof projects[0].images[0] === 'string'}
+                            />
+                            <div className="absolute top-4 right-4 bg-lime-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                {projects[0].category}
                             </div>
                         </div>
-                    ))}
+                        <div className="p-6 flex flex-col flex-grow">
+                            <h3 className="text-xl font-bold text-gray-800 mb-2">{projects[0].title}</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-grow">{projects[0].description}</p>
+                            <div className="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                                <span>📍 {projects[0].location}</span>
+                                <span>📅 {projects[0].year}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Project 2 - Chitungwiza Sewer */}
+                    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition flex flex-col w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
+                        <div className="bg-blue-600 h-2"></div>
+                        <div className="relative h-56">
+                            <Image
+                                src={projects[1].images[0]}
+                                alt={projects[1].title}
+                                fill
+                                className="object-cover"
+                                unoptimized={typeof projects[1].images[0] === 'string'}
+                            />
+                            <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                {projects[1].category}
+                            </div>
+                        </div>
+                        <div className="p-6 flex flex-col flex-grow">
+                            <h3 className="text-xl font-bold text-gray-800 mb-2">{projects[1].title}</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-grow">{projects[1].description}</p>
+                            <div className="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                                <span>📍 {projects[1].location}</span>
+                                <span>📅 {projects[1].year}</span>
+                            </div>
+                            <button
+                                onClick={() => openGallery(projects[1])}
+                                className="mt-4 w-full bg-gray-100 cursor-pointer hover:bg-gray-200 text-gray-700 py-2 rounded-md text-sm font-medium transition"
+                            >
+                                🖼️ View Gallery ({projects[1].images.length} photos)
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Project 3 - ZOU Fountain */}
+                    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition flex flex-col w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]">
+                        <div className="bg-sky-600 h-2"></div>
+                        <div className="relative h-56">
+                            <Image
+                                src={projects[2].images[0]}
+                                alt={projects[2].title}
+                                fill
+                                className="object-cover"
+                                unoptimized={typeof projects[2].images[0] === 'string'}
+                            />
+                            <div className="absolute top-4 right-4 bg-sky-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                {projects[2].category}
+                            </div>
+                        </div>
+                        <div className="p-6 flex flex-col flex-grow">
+                            <h3 className="text-xl font-bold text-gray-800 mb-2">{projects[2].title}</h3>
+                            <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-grow">{projects[2].description}</p>
+                            <div className="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-100">
+                                <span>📍 {projects[2].location}</span>
+                                <span>📅 {projects[2].year}</span>
+                            </div>
+                            <button
+                                onClick={() => openGallery(projects[2])}
+                                className="mt-4 w-full bg-gray-100 cursor-pointer hover:bg-gray-200 text-gray-700 py-2 rounded-md text-sm font-medium transition"
+                            >
+                                🖼️ View Gallery ({projects[2].images.length} photos)
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
